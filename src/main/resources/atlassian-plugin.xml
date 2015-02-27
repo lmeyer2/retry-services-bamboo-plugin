@@ -19,17 +19,5 @@
         <interface>com.atlassian.sal.api.transaction.TransactionTemplate</interface>
     </component-import>
 
-    <buildProcessorServer key="retryPluginPostBuild" name="Retry Automatic Build" class="com.aboutcoders.atlassian.bamboo.RetryPostBuild">
-        <skipIfFailed>false</skipIfFailed>
-        <description>Automatic retry task if build failed (for retry task types).</description>
-    </buildProcessorServer>
-
-    <bambooEventListener key="buildCompletedCustomListener" name="Build Complete Notification Listener" class="com.aboutcoders.atlassian.bamboo.BuildCompleteCustomListener">
-        <description>Listens for completed build</description>
-    </bambooEventListener>
-
-    <notificationType key="unknownBuildComplete" name="All Unknown Build Completed" weight="40" class="com.aboutcoders.atlassian.bamboo.UnknownBuildNotificationType">
-        <description>Notification sent for every build in UNKNOWN status</description>
-    </notificationType>
-
+    <postChainAction key="autoRetryPostChainAction" name="Bamboo Automatic Retry - Post Chain Action" class="com.aboutcoders.atlassian.bamboo.PostChainAction"/>
 </atlassian-plugin>

@@ -20,6 +20,8 @@ public class RetryTaskConfigurator extends AbstractTaskConfigurator
     {
         final Map<String, String> config = super.generateTaskConfigMap(params, previousTaskDefinition);
         config.put("checkboxEnabled", params.getString("checkboxEnabled"));
+        config.put("numberOfRetries", params.getString("numberOfRetries"));
+        config.put("defaultUser", params.getString("defaultUser"));
         return config;
     }
 
@@ -28,6 +30,8 @@ public class RetryTaskConfigurator extends AbstractTaskConfigurator
     {
         super.populateContextForCreate(context);
         context.put("checkboxEnabled", true);
+        context.put("numberOfRetries", 3);
+        context.put("defaultUser", "");
     }
 
     @Override
@@ -35,6 +39,8 @@ public class RetryTaskConfigurator extends AbstractTaskConfigurator
     {
         super.populateContextForEdit(context, taskDefinition);
         context.put("checkboxEnabled", taskDefinition.getConfiguration().get("checkboxEnabled"));
+        context.put("numberOfRetries", taskDefinition.getConfiguration().get("numberOfRetries"));
+        context.put("defaultUser", taskDefinition.getConfiguration().get("defaultUser"));
     }
 
     @Override
@@ -42,6 +48,8 @@ public class RetryTaskConfigurator extends AbstractTaskConfigurator
     {
         super.populateContextForView(context, taskDefinition);
         context.put("checkboxEnabled", taskDefinition.getConfiguration().get("checkboxEnabled"));
+        context.put("numberOfRetries", taskDefinition.getConfiguration().get("numberOfRetries"));
+        context.put("defaultUser", taskDefinition.getConfiguration().get("defaultUser"));
     }
 
     @Override
